@@ -1,0 +1,366 @@
+/* ========================
+   General Styles
+   ======================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+/* ========================
+   Container & Layout
+   ======================== */
+
+.container {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    max-width: 500px;
+    width: 100%;
+    animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========================
+   Header
+   ======================== */
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #667eea;
+    padding-bottom: 20px;
+}
+
+header h1 {
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 8px;
+}
+
+header p {
+    color: #888;
+    font-size: 14px;
+}
+
+/* ========================
+   Input Section
+   ======================== */
+
+.input-section {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.task-input {
+    flex: 1;
+    min-width: 150px;
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+.due-date-input {
+    flex: 0 1 150px;
+}
+
+.task-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.add-btn {
+    padding: 12px 30px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.add-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.add-btn:active {
+    transform: translateY(0);
+}
+
+/* ========================
+   Task Counter
+   ======================== */
+
+.task-counter {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+    font-weight: 500;
+}
+
+/* ========================
+   Task List
+   ======================== */
+
+.task-list-section {
+    min-height: 200px;
+    margin-bottom: 20px;
+}
+
+.task-list {
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-left: 4px solid #667eea;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+.task-item.overdue {
+    border-left-color: #ff6b6b;
+    background: #fff5f5;
+}
+
+.task-item.due-today {
+    border-left-color: #ffa500;
+    background: #fffbf0;
+}
+
+.task-item.due-upcoming {
+    border-left-color: #51cf66;
+}
+
+.task-item.completed.overdue {
+    border-left-color: #ccc;
+    background: #f9f9f9;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.task-item:hover {
+    background: #f0f0f0;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.task-item.completed {
+    opacity: 0.6;
+}
+
+.task-item.completed .task-text {
+    text-decoration: line-through;
+    color: #999;
+}
+
+/* ========================
+   Task Checkbox
+   ======================== */
+
+.task-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #667eea;
+    flex-shrink: 0;
+}
+
+/* ========================
+   Task Text
+   ======================== */
+
+.task-text {
+    flex: 1;
+    color: #333;
+    font-size: 16px;
+    word-break: break-word;
+    transition: all 0.3s ease;
+}
+
+.task-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.task-meta {
+    display: flex;
+    gap: 10px;
+    font-size: 12px;
+    color: #666;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.task-due-date {
+    background: #e3f2fd;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.task-status {
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+.task-status.overdue {
+    background: #ffebee;
+    color: #d32f2f;
+}
+
+.task-status.due-today {
+    background: #fff3e0;
+    color: #f57c00;
+}
+
+.task-status.due-upcoming {
+    background: #e8f5e9;
+    color: #388e3c;
+}
+
+/* ========================
+   Delete Button
+   ======================== */
+
+.delete-btn {
+    padding: 6px 12px;
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.delete-btn:hover {
+    background: #ff5252;
+    transform: scale(1.05);
+}
+
+.delete-btn:active {
+    transform: scale(0.95);
+}
+
+/* ========================
+   Empty Message
+   ======================== */
+
+.empty-message {
+    text-align: center;
+    color: #999;
+    font-size: 16px;
+    padding: 40px 20px;
+    display: none;
+}
+
+.empty-message.show {
+    display: block;
+}
+
+/* ========================
+   Responsive Design
+   ======================== */
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+    }
+
+    header h1 {
+        font-size: 24px;
+    }
+
+    .input-section {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .add-btn {
+        width: 100%;
+    }
+
+    .task-input {
+        width: 100%;
+        min-width: auto;
+    }
+
+    .due-date-input {
+        flex: 1;
+        min-width: auto;
+    }
+
+    .task-item {
+        padding: 12px;
+        font-size: 14px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .task-content {
+        width: 100%;
+    }
+
+    .delete-btn {
+        padding: 5px 10px;
+        font-size: 12px;
+        align-self: flex-end;
+        margin-top: 8px;
+    }
+
+    .task-meta {
+        font-size: 11px;
+    }
+}
